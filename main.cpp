@@ -45,15 +45,15 @@ int main()
     /*
     Rule 30
     0 -> 1
-    1 -> 0
-    2 -> 0
+    1 -> 1
+    2 -> 1
     3 -> 0
     4 -> 0
-    5 -> 1
-    6 -> 1
+    5 -> 0
+    6 -> 0
     7 -> 1
     */
-    std::array<uint8_t, 8> rule = {1,0,0,0,0,1,1,1};
+    std::array<uint8_t, 8> rule = {1,1,1,0,0,0,0,1};
     print_rule(rule);
 
     for(int row = 0; row < world.rows-10; row++)
