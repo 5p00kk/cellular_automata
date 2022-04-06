@@ -56,11 +56,28 @@ int main()
     std::array<uint8_t, 8> rule = {1,1,1,0,0,0,0,1};
     print_rule(rule);
 
-    for(int row = 0; row < world.rows-10; row++)
+    printf("Applying rules\n");
+
+    /* Go row by row and apply rules */
+    for(int row = 0; row < world.rows; row++)
     {
-        for(int col = 0; col < world.cols; col++)
+        /* 1 to world.cols-1 to avoid reading from outside of the edge 
+           as col is the central pixel of 3 */
+        for(int col = 1; col < world.cols-1; col++)
         {
-            world.at<char>(row,col) = 255;
+            /* Reached the last row */
+            if(row+1 > world.rows-1) break;
+            
+            uint8_t left_cell = world.at<uint8_t>(row,col-1);
+            uint8_t central_cell = world.at<uint8_t>(row,col);
+            uint8_t right_cell = world.at<uint8_t>(row,col+1);
+           
+            uint8_t rule_idx = ((right_cell   & 0x01) * 1) +  
+                               ((central_cell & 0x01) * 2) +
+                               ((left_cell    & 0x01) * 4);
+            
+            /* Apply the rule */
+            world.at<uint8_t>(row+1,col) = rule[rule_idx]*255;
         }
     }
 
