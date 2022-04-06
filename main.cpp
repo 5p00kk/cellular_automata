@@ -39,6 +39,7 @@ int main()
     a single 8bit int.
     */
     /*
+    Rule 30
     0 -> 0
     1 -> 1
     2 -> 1
