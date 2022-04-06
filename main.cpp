@@ -29,7 +29,8 @@ void print_rule(const std::array<uint8_t, 8> &rule)
 int main()
 {
     /* Create the world */
-    cv::Mat world = cv::Mat::zeros(100, 100, CV_8UC1);
+    cv::Mat world = cv::Mat::ones(501, 1001, CV_8UC1) * 255;
+    world.at<uint8_t>(0, 500) = 0;
 
     /* Printouts */
     printf("\nStarting cellular automata\n");
