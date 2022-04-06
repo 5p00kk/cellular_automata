@@ -53,6 +53,13 @@ int main()
     std::array<uint8_t, 8> rule = {0,1,1,1,1,0,0,0};
     print_rule(rule);
 
+    for(int row = 0; row < world.rows-10; row++)
+    {
+        for(int col = 0; col < world.cols; col++)
+        {
+            world.at<char>(row,col) = 255;
+        }
+    }
 
     printf("Saving image\n");
     cv::imwrite("output.png", world);
