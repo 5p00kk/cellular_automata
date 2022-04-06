@@ -22,7 +22,9 @@ void print_rule(const std::array<uint8_t, 8> &rule)
         print_cell(elem&0x01);
         printf("\n");
     }
+    printf("\n");
 }
+
 
 int main()
 {
