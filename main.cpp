@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <opencv2/core/mat.hpp>
+#include <opencv2/imgcodecs.hpp>
 
 void print_cell(bool full)
 {
@@ -52,6 +53,9 @@ int main()
     std::array<uint8_t, 8> rule = {0,1,1,1,1,0,0,0};
     print_rule(rule);
 
+
+    printf("Saving image\n");
+    cv::imwrite("output.png", world);
 
     printf("\n");
 }
