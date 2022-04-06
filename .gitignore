@@ -31,5 +31,10 @@
 *.out
 *.app
 
-# Build folder
+# Build stuff
 build/
+build.sh
+
+# vs code stuff
+.vscode/
+
