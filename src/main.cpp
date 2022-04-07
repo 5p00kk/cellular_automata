@@ -31,15 +31,11 @@ int main()
             if(row+1 > world.rows-1) break;
            
             uint8_t left_cell = world.at<uint8_t>(row,col-1);
-            uint8_t central_cell = world.at<uint8_t>(row,col);
+            uint8_t center_cell = world.at<uint8_t>(row,col);
             uint8_t right_cell = world.at<uint8_t>(row,col+1);
-           
-            uint8_t case_idx = (right_cell * 1)   +
-                               (central_cell * 2) +
-                               (left_cell * 4);
             
             /* Apply the rule */
-            world.at<uint8_t>(row+1,col) = rule.get_rule_case(case_idx);
+            world.at<uint8_t>(row+1,col) = rule.get_rule_case(left_cell, center_cell, right_cell);
         }
     }
 

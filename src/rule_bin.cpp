@@ -15,16 +15,19 @@ void c_rule_bin::set_rule(uint16_t rule_number)
     }
 }
 
-uint8_t c_rule_bin::get_rule_case(uint8_t rule_case) const
+uint8_t c_rule_bin::get_rule_case(uint8_t left_cell, uint8_t center_cell, uint8_t right_cell) const
 {
-    if(rule_case >= m_rule.size())
+    if(left_cell > 1 || center_cell > 1 || right_cell > 1)
     {
-        printf("ERROR: Incorrect rule case");
+        printf("ERROR: Incorrect cell value\n");
         return 0xFF;
     }
     else
     {
-        return m_rule[rule_case];
+        uint8_t case_idx = (right_cell * 1)   +
+                           (center_cell * 2) +
+                           (left_cell * 4);
+        return m_rule[case_idx];
     }
 
 }
