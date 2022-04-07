@@ -53,9 +53,13 @@ int main()
             {
                 world_visu.at<uint8_t>(row,col) = 255;
             }
+            else
+            {
+                world_visu.at<uint8_t>(row,col) = 0;
+            }
         }
     }
-    
+
     printf("Saving image\n");
     cv::imwrite("output.png", world_visu);
 
