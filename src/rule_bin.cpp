@@ -31,12 +31,14 @@ uint8_t c_rule_bin::get_rule_case(uint8_t rule_case) const
 
 void c_rule_bin::print_rule() const
 {
-    printf("\nCurrent rule:\n");
+    printf("\nCurrent rule (binary rule):\n");
+    printf("o - empty cell, x - full cell\n");
 
     for (const auto& elem : m_rule)
     {
         /* get index */
         auto i = &elem - &m_rule[0];
+        printf("case %ld: ", i);
         print_cell(i&0x04);
         print_cell(i&0x02);
         print_cell(i&0x01);
