@@ -34,12 +34,12 @@ int main()
             uint8_t central_cell = world.at<uint8_t>(row,col);
             uint8_t right_cell = world.at<uint8_t>(row,col+1);
            
-            uint8_t rule_idx = (right_cell * 1)   +
+            uint8_t case_idx = (right_cell * 1)   +
                                (central_cell * 2) +
                                (left_cell * 4);
             
             /* Apply the rule */
-            world.at<uint8_t>(row+1,col) = rule.get_rule_case(rule_idx);
+            world.at<uint8_t>(row+1,col) = rule.get_rule_case(case_idx);
         }
     }
 
