@@ -13,5 +13,8 @@ make cell_aut
 ```
 
 ## Examples
-### Rule 30
+### Rule 30 (binary)
 ![rule_30](./examples/rule_30.png)
+
+### Rule 2040 (three colour totalistic)
+![rule_30](./examples/rule_tct_2040.png)
