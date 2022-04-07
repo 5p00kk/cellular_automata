@@ -1,30 +1,8 @@
+#include "rule.h"
+
 #include <stdio.h>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/imgcodecs.hpp>
-
-void print_cell(bool full)
-{
-    const char cell_val = full ? 'x':'o';
-    printf("%c", cell_val);
-}
-
-void print_rule(const std::array<uint8_t, 8> &rule)
-{
-    printf("\nCurrent rule:\n");
-    for (const auto& elem : rule)
-    {
-        /* get index */
-        auto i = &elem - &rule[0];
-        print_cell(i&0x04);
-        print_cell(i&0x02);
-        print_cell(i&0x01);
-        printf(" -> ");
-        print_cell(elem&0x01);
-        printf("\n");
-    }
-    printf("\n");
-}
-
 
 int main()
 {
@@ -53,9 +31,12 @@ int main()
     6 -> 0
     7 -> 1
     */
-    std::array<uint8_t, 8> rule = {1,1,1,0,0,0,0,1};
-    print_rule(rule);
 
+    c_rule rule;
+    rule.set_rule(1,1,1,0,1,0,0,1);
+    rule.set_rule_type(e_rule_type::bin);
+    rule.print_rule();
+    
     printf("Applying rules\n");
 
     /* Go row by row and apply rules */
@@ -77,7 +58,7 @@ int main()
                                ((left_cell    & 0x01) * 4);
             
             /* Apply the rule */
-            world.at<uint8_t>(row+1,col) = rule[rule_idx]*255;
+            world.at<uint8_t>(row+1,col) = rule.get_rule_case(rule_idx)*255;
         }
     }
 
