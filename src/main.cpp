@@ -14,28 +14,11 @@ int main()
     printf("\nStarting cellular automata\n");
     printf("World size: %d, %d\n", world.cols, world.rows);
 
-   
     /* Define a rule */
-    /* 
-    For 3 cells into 1 type of rules, a full rule can be encoded as 
-    a single 8bit int.
-    */
-    /*
-    Rule 30
-    0 -> 1
-    1 -> 1
-    2 -> 1
-    3 -> 0
-    4 -> 0
-    5 -> 0
-    6 -> 0
-    7 -> 1
-    */
     c_rule_bin rule(30);
     rule.print_rule();
     
-    printf("Applying rules\n");
-
+    printf("Applying the rule\n");
     /* Go row by row and apply rules */
     for(int row = 0; row < world.rows; row++)
     {
