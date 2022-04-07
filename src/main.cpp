@@ -1,4 +1,4 @@
-#include "rule.h"
+#include "rule_bin.h"
 
 #include <stdio.h>
 #include <opencv2/core/mat.hpp>
@@ -31,10 +31,7 @@ int main()
     6 -> 0
     7 -> 1
     */
-
-    c_rule rule;
-    rule.set_rule(1,1,1,0,1,0,0,1);
-    rule.set_rule_type(e_rule_type::bin);
+    c_rule_bin rule(30);
     rule.print_rule();
     
     printf("Applying rules\n");
