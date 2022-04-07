@@ -1,3 +1,5 @@
+#pragma once
+
 #include "rule_i.h"
 
 class c_rule_bin: public i_rule
