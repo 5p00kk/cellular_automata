@@ -8,19 +8,10 @@ c_rule_bin::c_rule_bin(uint16_t rule_number)
 
 void c_rule_bin::set_rule(uint16_t rule_number)
 {
-    for(int i=7;i>=0;i--)
+    for(int i=0;i<8;i++)
     {
         m_rule[i] = rule_number%2;
         rule_number /= 2;
-    }
-
-    /* A bit of hack here as in Wolfram's book 0 is white */
-    for(int i=0;i<8;i++)
-    {
-        if(m_rule[i] == 0)
-            m_rule[i] = 1;
-        else
-            m_rule[i] = 0;
     }
 }
 

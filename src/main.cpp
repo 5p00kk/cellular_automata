@@ -7,8 +7,9 @@
 int main()
 {
     /* Create the world */
-    cv::Mat world = cv::Mat::ones(501, 1001, CV_8UC1) * 255;
-    world.at<uint8_t>(0, 500) = 0;
+    cv::Mat world = cv::Mat::zeros(501, 1001, CV_8UC1);
+    cv::Mat world_visu = cv::Mat::zeros(501, 1001, CV_8UC1);
+    world.at<uint8_t>(0, 500) = 1;
 
     /* Printouts */
     printf("\nStarting cellular automata\n");
@@ -33,12 +34,12 @@ int main()
             uint8_t central_cell = world.at<uint8_t>(row,col);
             uint8_t right_cell = world.at<uint8_t>(row,col+1);
            
-            uint8_t rule_idx = ((right_cell   & 0x01) * 1) +  
-                               ((central_cell & 0x01) * 2) +
-                               ((left_cell    & 0x01) * 4);
+            uint8_t rule_idx = ((right_cell   == 0x01) * 1) +  
+                               ((central_cell == 0x01) * 2) +
+                               ((left_cell    == 0x01) * 4);
             
             /* Apply the rule */
-            world.at<uint8_t>(row+1,col) = rule.get_rule_case(rule_idx)*255;
+            world.at<uint8_t>(row+1,col) = rule.get_rule_case(rule_idx);
         }
     }
 
