@@ -28,7 +28,7 @@ int main()
         {
             /* Reached the last row */
             if(row+1 > world.rows-1) break;
-            
+           
             uint8_t left_cell = world.at<uint8_t>(row,col-1);
             uint8_t central_cell = world.at<uint8_t>(row,col);
             uint8_t right_cell = world.at<uint8_t>(row,col+1);
