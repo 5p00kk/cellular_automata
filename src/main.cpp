@@ -19,8 +19,8 @@ int main()
     c_rule_bin rule(30);
     rule.print_rule();
     
+    /* Apply the rule line by line */
     printf("Applying the rule\n");
-    /* Go row by row and apply rules */
     for(int row = 0; row < world.rows; row++)
     {
         /* 1 to world.cols-1 to avoid reading from outside of the edge 
@@ -34,17 +34,23 @@ int main()
             uint8_t central_cell = world.at<uint8_t>(row,col);
             uint8_t right_cell = world.at<uint8_t>(row,col+1);
            
-            uint8_t rule_idx = ((right_cell   == 0x01) * 1) +  
-                               ((central_cell == 0x01) * 2) +
-                               ((left_cell    == 0x01) * 4);
+            uint8_t rule_idx = (right_cell * 1)   +
+                               (central_cell * 2) +
+                               (left_cell * 4);
             
             /* Apply the rule */
             world.at<uint8_t>(row+1,col) = rule.get_rule_case(rule_idx);
         }
     }
 
-
     /* Visualize */
+    /* 
+        Full cells have value 1 
+        Empty cells have value 0
+        Visualization step makes sure a proper output image is generated
+        to follow Wolfram's convention full - black, empty - white
+    */
+    printf("Visualizing output\n");
     for(int row = 0; row < world.rows; row++)
     {
         for(int col = 0; col < world.cols; col++)
@@ -60,6 +66,7 @@ int main()
         }
     }
 
+    /* Save output */
     printf("Saving image\n");
     cv::imwrite("output.png", world_visu);
 
