@@ -8,10 +8,8 @@ c_rule_bin::c_rule_bin(uint16_t rule_number)
 
 void c_rule_bin::set_rule(uint16_t rule_number)
 {
-    printf("Setting rule\n");
     for(int i=7;i>=0;i--)
     {
-        printf("Step %d, before: %d, reminder: %d, after: %d\n", i, rule_number, rule_number%2, rule_number);
         m_rule[i] = rule_number%2;
         rule_number /= 2;
     }
