@@ -43,8 +43,21 @@ int main()
         }
     }
 
+
+    /* Visualize */
+    for(int row = 0; row < world.rows; row++)
+    {
+        for(int col = 0; col < world.cols; col++)
+        {
+            if(world.at<uint8_t>(row,col) == 0)
+            {
+                world_visu.at<uint8_t>(row,col) = 255;
+            }
+        }
+    }
+    
     printf("Saving image\n");
-    cv::imwrite("output.png", world);
+    cv::imwrite("output.png", world_visu);
 
     printf("\n");
 }
