@@ -19,8 +19,9 @@ class c_visualizer
         void set_mode(e_visu mode);
         void add_color_mapping(uint8_t val, s_color color);
         void add_bw_mapping(uint8_t val, uint8_t bw);
-
     private:
+        void visualize_bw(const cv::Mat &world, cv::Mat &visuals) const;
+        void visualize_col(const cv::Mat &world, cv::Mat &visuals) const;
         e_visu m_mode = e_visu::bw;
         std::map<uint8_t, uint8_t> m_bw_map{};
         std::map<uint8_t, s_color> m_color_map{};
