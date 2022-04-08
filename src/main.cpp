@@ -1,4 +1,5 @@
 #include "rule_bin.h"
+#include "rule_tct.h"
 
 #include <stdio.h>
 #include <opencv2/core/mat.hpp>
