@@ -1,5 +1,6 @@
 #include "rule_bin.h"
 #include "rule_tct.h"
+#include "visualizer.h"
 
 #include <stdio.h>
 #include <opencv2/core/mat.hpp>
@@ -8,9 +9,8 @@
 int main()
 {
     /* Create the world */
-    cv::Mat world = cv::Mat::zeros(501, 1001, CV_8UC1);
-    cv::Mat world_visu = cv::Mat::zeros(501, 1001, CV_8UC1);
-    world.at<uint8_t>(0, 500) = 1;
+    cv::Mat world = cv::Mat::zeros(1000, 501, CV_8UC1);
+    world.at<uint8_t>(0, 250) = 1;
 
     /* Printouts */
     printf("\nStarting cellular automata\n");
@@ -48,24 +48,15 @@ int main()
         to follow Wolfram's convention full - black, empty - white
     */
     printf("Visualizing output\n");
-    for(int row = 0; row < world.rows; row++)
-    {
-        for(int col = 0; col < world.cols; col++)
-        {
-            if(world.at<uint8_t>(row,col) == 0)
-            {
-                world_visu.at<uint8_t>(row,col) = 255;
-            }
-            else
-            {
-                world_visu.at<uint8_t>(row,col) = 0;
-            }
-        }
-    }
+    cv::Mat world_visu;
+    c_visualizer visualizer;
+    visualizer.set_mode(e_visu::bw);
+    visualizer.add_bw_mapping(0, 0);
+    visualizer.add_bw_mapping(1, 128);
+    visualizer.add_bw_mapping(2, 255);
+    visualizer.visualize(world, world_visu);
 
     /* Save output */
     printf("Saving image\n");
     cv::imwrite("output.png", world_visu);
-
-    printf("\n");
 }
