@@ -33,7 +33,24 @@ void c_visualizer::visualize_bw(const cv::Mat &world, cv::Mat &visuals) const
 
 void c_visualizer::visualize_col(const cv::Mat &world, cv::Mat &visuals) const
 {
-    /* placeholder */
+    /* Allocate correct mat if needed */
+    if(visuals.rows != world.rows ||
+       visuals.cols != world.cols ||
+       visuals.type() != CV_8UC3)
+    {
+        visuals.create(world.rows, world.cols, CV_8UC3);
+    }
+
+    for(int row = 0; row < world.rows; row++)
+    {
+        for(int col = 0; col < world.cols; col++)
+        {
+            s_color color = m_color_map[world.at<uint8_t>(row,col)];
+            visuals.at<cv::Vec3b>(row,col)[0] = color.b;
+            visuals.at<cv::Vec3b>(row,col)[1] = color.g;
+            visuals.at<cv::Vec3b>(row,col)[2] = color.r;
+        }
+    }
 }
 
 void c_visualizer::set_mode(e_visu mode)
