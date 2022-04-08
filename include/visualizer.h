@@ -1,7 +1,7 @@
 #pragma once
 
 #include <opencv2/core/mat.hpp>
-#include <map>
+#include <array>
 
 enum class e_visu {bw, col};
 
@@ -23,6 +23,6 @@ class c_visualizer
         void visualize_bw(const cv::Mat &world, cv::Mat &visuals) const;
         void visualize_col(const cv::Mat &world, cv::Mat &visuals) const;
         e_visu m_mode = e_visu::bw;
-        std::map<uint8_t, uint8_t> m_bw_map{};
-        std::map<uint8_t, s_color> m_color_map{};
+        std::array<uint8_t, 256> m_bw_map;
+        std::array<s_color, 256> m_color_map;
 };
