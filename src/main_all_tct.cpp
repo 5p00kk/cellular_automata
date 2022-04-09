@@ -16,10 +16,10 @@ int main()
 
     /* Prepare visualizer */
     c_visualizer visualizer;
-    visualizer.set_mode(e_visu::bw);
-    visualizer.add_bw_mapping(0, 0);
-    visualizer.add_bw_mapping(1, 128);
-    visualizer.add_bw_mapping(2, 255);
+    visualizer.set_mode(e_visu::gray);
+    visualizer.add_gray_mapping(0, 0);
+    visualizer.add_gray_mapping(1, 128);
+    visualizer.add_gray_mapping(2, 255);
 
     for(int i=0; i<2187; i++)    
     {

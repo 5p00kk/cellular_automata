@@ -3,7 +3,7 @@
 #include <opencv2/core/mat.hpp>
 #include <array>
 
-enum class e_visu {bw, col};
+enum class e_visu {gray, col};
 
 struct s_color
 {
@@ -18,11 +18,11 @@ class c_visualizer
         void visualize(const cv::Mat &world, cv::Mat &visuals) const;
         void set_mode(e_visu mode);
         void add_color_mapping(uint8_t val, s_color color);
-        void add_bw_mapping(uint8_t val, uint8_t bw);
+        void add_gray_mapping(uint8_t val, uint8_t grayscale);
     private:
-        void visualize_bw(const cv::Mat &world, cv::Mat &visuals) const;
+        void visualize_gray(const cv::Mat &world, cv::Mat &visuals) const;
         void visualize_col(const cv::Mat &world, cv::Mat &visuals) const;
-        e_visu m_mode = e_visu::bw;
-        std::array<uint8_t, 256> m_bw_map;
+        e_visu m_mode = e_visu::gray;
+        std::array<uint8_t, 256> m_gray_map;
         std::array<s_color, 256> m_color_map;
 };

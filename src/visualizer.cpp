@@ -8,9 +8,9 @@
 */
 void c_visualizer::visualize(const cv::Mat &world, cv::Mat &visuals) const
 {
-    if(m_mode == e_visu::bw)
+    if(m_mode == e_visu::gray)
     {
-        visualize_bw(world, visuals);
+        visualize_gray(world, visuals);
     }
     else if(m_mode == e_visu::col)
     {
@@ -26,7 +26,7 @@ void c_visualizer::visualize(const cv::Mat &world, cv::Mat &visuals) const
     \param world State of the world after running the cellular automata
     \param visuals Output visualization image (grayscale) based on world state
 */
-void c_visualizer::visualize_bw(const cv::Mat &world, cv::Mat &visuals) const
+void c_visualizer::visualize_gray(const cv::Mat &world, cv::Mat &visuals) const
 {
     /* Allocate correct mat if needed */
     if(visuals.rows != world.rows ||
@@ -40,7 +40,7 @@ void c_visualizer::visualize_bw(const cv::Mat &world, cv::Mat &visuals) const
     {
         for(int col = 0; col < world.cols; col++)
         {
-            visuals.at<uint8_t>(row,col) = m_bw_map[world.at<uint8_t>(row,col)];
+            visuals.at<uint8_t>(row,col) = m_gray_map[world.at<uint8_t>(row,col)];
         }
     }
 }
@@ -107,7 +107,7 @@ void c_visualizer::add_color_mapping(uint8_t val, s_color color)
     \param color corresponding output grayscale color
     \note Valid ONLY for grayscale mode 
 */
-void c_visualizer::add_bw_mapping(uint8_t val, uint8_t bw)
+void c_visualizer::add_gray_mapping(uint8_t val, uint8_t grayscale)
 {
-    m_bw_map[val] = bw;
+    m_gray_map[val] = grayscale;
 }
