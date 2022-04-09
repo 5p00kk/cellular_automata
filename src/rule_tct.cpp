@@ -8,7 +8,13 @@ c_rule_tct::c_rule_tct(uint16_t rule_number)
 
 void c_rule_tct::set_rule(uint16_t rule_number)
 {
-    /* TODO check if numbe rtoo large */
+    /* Only 3^7(2187) rules are possible */
+    if(rule_number>2186)
+    {
+        printf("ERROR: Only 2185 rules\n");
+        return;
+    }
+
     for(int i=0;i<8;i++)
     {
         m_rule[i] = rule_number%3;
