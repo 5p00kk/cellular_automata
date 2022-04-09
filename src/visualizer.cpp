@@ -1,11 +1,6 @@
 #include "visualizer.h"
 
-/*!
-    \brief Create a visualization image <visuals> for input world state <world>
-    \param world State of the world after running the cellular automata
-    \param visuals Output visualization image based on world state
-    \note The result (grayscale or RGB visualization) will depend on mode selected by <set_mode>
-*/
+
 void c_visualizer::visualize(const cv::Mat &world, cv::Mat &visuals) const
 {
     if(m_mode == e_visu::gray)
@@ -18,14 +13,6 @@ void c_visualizer::visualize(const cv::Mat &world, cv::Mat &visuals) const
     }
 }
 
-
-/*!
-    \brief
-    Create a visualization image <visuals> for input world state <world>.
-    The result is a grayscale visualization
-    \param world State of the world after running the cellular automata
-    \param visuals Output visualization image (grayscale) based on world state
-*/
 void c_visualizer::visualize_gray(const cv::Mat &world, cv::Mat &visuals) const
 {
     /* Allocate correct mat if needed */
@@ -44,15 +31,6 @@ void c_visualizer::visualize_gray(const cv::Mat &world, cv::Mat &visuals) const
         }
     }
 }
-
-
-/*!
-    \brief
-    Create a visualization image <visuals> for input world state <world>.
-    The result is a RGB visualization
-    \param world State of the world after running the cellular automata
-    \param visuals Output visualization image (RGB) based on world state
-*/
 void c_visualizer::visualize_col(const cv::Mat &world, cv::Mat &visuals) const
 {
     /* Allocate correct mat if needed */
@@ -75,38 +53,16 @@ void c_visualizer::visualize_col(const cv::Mat &world, cv::Mat &visuals) const
     }
 }
 
-
-/*!
-    \brief
-    Select the mode of operation.
-    \param mode Operation mode (grayscale or RGB)
-*/
 void c_visualizer::set_mode(e_visu mode)
 {
     m_mode = mode;
 }
 
-
-/*!
-    \brief
-    Add mapping between world values and output RGB color
-    \param val world value
-    \param color corresponding output RGB color
-    \note Valid ONLY for RGB mode 
-*/
 void c_visualizer::add_color_mapping(uint8_t val, s_color color)
 {
     m_color_map[val] = color;
 }
 
-
-/*!
-    \brief
-    Add mapping between world values and output grayscale value
-    \param val world value
-    \param color corresponding output grayscale color
-    \note Valid ONLY for grayscale mode 
-*/
 void c_visualizer::add_gray_mapping(uint8_t val, uint8_t grayscale)
 {
     m_gray_map[val] = grayscale;
