@@ -9,8 +9,8 @@
 int main()
 {
     /* Create the world */
-    cv::Mat world = cv::Mat::zeros(1000, 501, CV_8UC1);
-    world.at<uint8_t>(0, 250) = 1;
+    cv::Mat world = cv::Mat::zeros(800, 800, CV_8UC1);
+    world.at<uint8_t>(0, 400) = 1;
 
     /* Printouts */
     printf("\nStarting cellular automata\n");
