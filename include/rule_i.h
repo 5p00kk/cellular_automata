@@ -6,8 +6,9 @@
 /*
 bin - simple binary rule
 tct - three color totallistic rule
+cont - continuous rule
 */
-enum class e_rule_type {bin, tct};
+enum class e_rule_type {bin, tct, cont};
 
 class i_rule
 {
