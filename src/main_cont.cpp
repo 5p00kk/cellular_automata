@@ -1,3 +1,5 @@
+#include "rule_cont.h"
+
 #include <stdio.h>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -9,7 +11,7 @@ int main()
 
     /* Create the world */
     cv::Mat world = cv::Mat::zeros(800, 800, CV_32FC1);
-    //world.at<float>(0, 400) = 1.0;
+    /* Random initalizaiton of the first row */
     for(int i=1; i<800; i++)
     {
         float value = ((float)std::rand())/RAND_MAX;
@@ -17,11 +19,14 @@ int main()
         world.at<float>(0, i) = value;
     }
 
-
     /* Printouts */
     printf("\nStarting cellular automata\n");
     printf("World size: %d, %d\n", world.cols, world.rows);
-    
+
+    /* Define a rule */
+    c_rule_cont rule(0.9);
+    rule.print_rule();
+
     /* Apply the rule line by line */
     printf("Applying the rule\n");
     for(int row = 0; row < world.rows; row++)
@@ -37,11 +42,8 @@ int main()
             float center_cell = world.at<float>(row,col);
             float right_cell = world.at<float>(row,col+1);
             
-            float avg = (left_cell + center_cell + right_cell)/3;
-            float sum = avg+0.9;
-            float fract = (sum - floor(sum));
             /* Apply the rule */
-            world.at<float>(row+1,col) = fract;
+            world.at<float>(row+1,col) = rule.get_rule_case(left_cell, center_cell, right_cell);
         }
     }
 
