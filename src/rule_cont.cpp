@@ -1,4 +1,5 @@
 #include "rule_cont.h"
+#include <math.h>
 
 c_rule_cont::c_rule_cont(float add_value)
 {
