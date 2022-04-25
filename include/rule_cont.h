@@ -14,4 +14,7 @@ class c_rule_cont
         void set_rule(float add_value);
         float get_rule_case(float left_cell, float center_cell, float right_cell) const;
         void print_rule() const;
+    private:
+        float m_add_value = 0;
+        e_rule_type m_rule_type;
 };
