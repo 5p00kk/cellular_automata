@@ -14,7 +14,7 @@ void c_rule_cont::set_rule(float add_value)
 
 float c_rule_cont::get_rule_case(float left_cell, float center_cell, float right_cell) const
 {
-    float avg = right_cell + center_cell + left_cell;
+    float avg = (right_cell + center_cell + left_cell)/3;
     float sum = avg+m_add_value;
     float fract = (sum - floor(sum));
     return fract;
