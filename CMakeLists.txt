@@ -6,6 +6,7 @@ find_package(OpenCV REQUIRED)
 set(SOURCES 
     src/rule_bin.cpp
     src/rule_tct.cpp
+    src/rule_cont.cpp
     src/visualizer.cpp)
 include_directories(cell_aut "include/" ${OpenCV_INCLUDE_DIRS})
 
