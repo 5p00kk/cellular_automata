@@ -14,3 +14,6 @@ target_link_libraries(cell_single LINK_PUBLIC ${OpenCV_LIBS})
 
 add_executable(cell_all src/main_all_tct.cpp ${SOURCES})
 target_link_libraries(cell_all LINK_PUBLIC ${OpenCV_LIBS})
+
+add_executable(cell_cont src/main_cont.cpp ${SOURCES})
+target_link_libraries(cell_cont LINK_PUBLIC ${OpenCV_LIBS})
