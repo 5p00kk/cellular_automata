@@ -10,8 +10,8 @@
 class c_rule_2d
 {
     public:
-        c_rule_2d(uint16_t rule);
-        void set_rule(uint16_t rule);
+        c_rule_2d(uint32_t rule);
+        void set_rule(uint32_t rule);
         uint8_t get_rule_case(uint8_t left_cell, uint8_t center_cell, uint8_t right_cell) const;
         void print_rule() const;
     private:

@@ -1,14 +1,15 @@
 #include "rule_2d.h"
 
 
-c_rule_2d::c_rule_2d(uint16_t rule)
+c_rule_2d::c_rule_2d(uint32_t rule)
 {
     m_rule_type = e_rule_type::twod;
     set_rule(rule);
 }
 
-void c_rule_2d::set_rule(uint16_t rule)
+void c_rule_2d::set_rule(uint32_t rule)
 {
+
     return;
 }
 
