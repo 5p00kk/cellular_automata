@@ -39,5 +39,6 @@ uint8_t c_rule_2d::get_rule_case(uint8_t center_cell, uint8_t full_neigh) const
 
 void c_rule_2d::print_rule() const
 {
+    /* TODO */
     return;
 }
