@@ -1,16 +1,16 @@
 #include "rule_2d.h"
 
 
-c_rule_2d::c_rule_2d(uint32_t rule)
+c_rule_2d::c_rule_2d(uint32_t rule_number)
 {
     m_rule_type = e_rule_type::twod;
-    set_rule(rule);
+    set_rule(rule_number);
 }
 
-void c_rule_2d::set_rule(uint32_t rule)
+void c_rule_2d::set_rule(uint32_t rule_number)
 {
     /* Only 2^18(262144) rules are possible */
-    if(rule>2186)
+    if(rule_number>2186)
     {
         printf("ERROR: Only 262144 rules\n");
         return;
