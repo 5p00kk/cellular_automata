@@ -12,6 +12,7 @@ int main()
 
     /* Create the world */
     uint8_t current_world = 0;
+    uint8_t next_world = 1;
     cv::Mat world[2];
     world[0] = cv::Mat::zeros(800, 800, CV_8UC1);
     world[1] = cv::Mat::zeros(800, 800, CV_8UC1);
@@ -25,25 +26,32 @@ int main()
     c_rule_2d rule(30);
     rule.print_rule();
     
-    // /* Apply the rule line by line */
-    // printf("Applying the rule\n");
-    // for(int row = 0; row < world.rows; row++)
-    // {
-    //     /* 1 to world.cols-1 to avoid reading from outside of the edge 
-    //        as col is the central pixel of 3 */
-    //     for(int col = 1; col < world.cols-1; col++)
-    //     {
-    //         /* Reached the last row */
-    //         if(row+1 > world.rows-1) break;
-           
-    //         uint8_t left_cell = world.at<uint8_t>(row,col-1);
-    //         uint8_t center_cell = world.at<uint8_t>(row,col);
-    //         uint8_t right_cell = world.at<uint8_t>(row,col+1);
+    /* Apply the rule line by line */
+    printf("Applying the rule\n");
+    /* 1 to world.row-1 to avoid reading from outside of the edge 
+       as col is the central pixel of 3 */
+    for(int row = 1; row < world[current_world].rows-1; row++)
+    {
+        /* 1 to world.cols-1 to avoid reading from outside of the edge 
+           as col is the central pixel of 3 */
+        for(int col = 1; col < world[current_world].cols-1; col++)
+        {
+            /* Check number of full neighbours */
+            uint8_t full_neigh = world[current_world].at<uint8_t>(row-1,col-1) +
+                                 world[current_world].at<uint8_t>(row,col-1)   +
+                                 world[current_world].at<uint8_t>(row+1,col-1) +
+                                 world[current_world].at<uint8_t>(row-1,col)   +
+                                 world[current_world].at<uint8_t>(row+1,col)   +
+                                 world[current_world].at<uint8_t>(row-1,col+1) +
+                                 world[current_world].at<uint8_t>(row,col+1)   +
+                                 world[current_world].at<uint8_t>(row+1,col+1);
+            /* Central cell */
+            uint8_t center_cell = world[current_world].at<uint8_t>(row,col);
             
-    //         /* Apply the rule */
-    //         world.at<uint8_t>(row+1,col) = rule.get_rule_case(left_cell, center_cell, right_cell);
-    //     }
-    // }
+            /* Apply the rule */
+            world[next_world].at<uint8_t>(row,col) = rule.get_rule_case(center_cell, full_neigh);
+        }
+    }
 
     /* Visualize */
     /* 
