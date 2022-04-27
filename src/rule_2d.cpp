@@ -25,7 +25,16 @@ void c_rule_2d::set_rule(uint32_t rule_number)
 
 uint8_t c_rule_2d::get_rule_case(uint8_t center_cell, uint8_t full_neigh) const
 {
-    return 0;
+    if(center_cell > 1 || full_neigh > 8)
+    {
+        printf("ERROR: Incorrect cell value\n");
+        return 0xFF;
+    }
+    else
+    {
+        uint8_t case_idx = center_cell + full_neigh*2;
+        return m_rule[case_idx];;
+    }
 }
 
 void c_rule_2d::print_rule() const
