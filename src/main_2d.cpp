@@ -58,7 +58,7 @@ int main()
     visualizer.set_mode(e_visu::gray);
     visualizer.add_gray_mapping(0, 255);
     visualizer.add_gray_mapping(1, 0);
-    visualizer.visualize(world[0], world_visu);
+    visualizer.visualize(world[current_world], world_visu);
 
     /* Save output */
     printf("Saving image\n");
