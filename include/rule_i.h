@@ -7,8 +7,9 @@
 bin - simple binary rule
 tct - three color totallistic rule
 cont - continuous rule
+twod - 2d automata rule
 */
-enum class e_rule_type {bin, tct, cont};
+enum class e_rule_type {bin, tct, cont, twod};
 
 class i_rule
 {
