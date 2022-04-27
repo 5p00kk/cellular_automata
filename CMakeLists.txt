@@ -7,6 +7,7 @@ set(SOURCES
     src/rule_bin.cpp
     src/rule_tct.cpp
     src/rule_cont.cpp
+    src/rule_2d.cpp
     src/visualizer.cpp)
 include_directories(cell_aut "include/" ${OpenCV_INCLUDE_DIRS})
 
