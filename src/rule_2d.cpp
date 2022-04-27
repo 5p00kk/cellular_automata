@@ -9,6 +9,12 @@ c_rule_2d::c_rule_2d(uint32_t rule)
 
 void c_rule_2d::set_rule(uint32_t rule)
 {
+    /* Only 2^18(262144) rules are possible */
+    if(rule>2186)
+    {
+        printf("ERROR: Only 262144 rules\n");
+        return;
+    }
 
     return;
 }
