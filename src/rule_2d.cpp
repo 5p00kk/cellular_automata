@@ -23,7 +23,7 @@ void c_rule_2d::set_rule(uint32_t rule_number)
     }
 }
 
-uint8_t c_rule_2d::get_rule_case(uint8_t left_cell, uint8_t center_cell, uint8_t right_cell) const
+uint8_t c_rule_2d::get_rule_case(uint8_t center_cell, uint8_t full_neigh) const
 {
     return 0;
 }

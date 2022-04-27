@@ -12,7 +12,7 @@ class c_rule_2d
     public:
         c_rule_2d(uint32_t rule_number);
         void set_rule(uint32_t rule_number);
-        uint8_t get_rule_case(uint8_t left_cell, uint8_t center_cell, uint8_t right_cell) const;
+        uint8_t get_rule_case(uint8_t center_cell, uint8_t full_neigh) const;
         void print_rule() const;
     private:
         e_rule_type m_rule_type;
