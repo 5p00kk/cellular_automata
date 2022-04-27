@@ -16,7 +16,11 @@ void c_rule_2d::set_rule(uint32_t rule_number)
         return;
     }
 
-    return;
+    for(int i=0;i<18;i++)
+    {
+        m_rule[i] = rule_number%2;
+        rule_number /= 2;
+    }
 }
 
 uint8_t c_rule_2d::get_rule_case(uint8_t left_cell, uint8_t center_cell, uint8_t right_cell) const

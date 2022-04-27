@@ -16,4 +16,5 @@ class c_rule_2d
         void print_rule() const;
     private:
         e_rule_type m_rule_type;
+        std::array<uint8_t, 18> m_rule;
 };
